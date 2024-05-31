@@ -6,10 +6,8 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
 import '../../../presentation/home_screen/home_screen.dart';
-import '../../../tst.dart';
 
- void login(String email,String password,BuildContext context) async {
-
+void login(String email, String password, BuildContext context) async {
   final response = await http.post(
     Uri.parse('http://axnoldigitalsolutions.in/Training/api/login'),
     headers: <String, String>{
@@ -23,7 +21,9 @@ import '../../../tst.dart';
 
   if (response.statusCode == 200) {
     final Map<String, dynamic> responseData = jsonDecode(response.body);
-   Get.to(HomeScreen(responseData_val: responseData,));
+    Get.to(HomeScreen(
+      responseData_val: responseData,
+    ));
   } else {
     // Handle error
     ScaffoldMessenger.of(context).showSnackBar(
